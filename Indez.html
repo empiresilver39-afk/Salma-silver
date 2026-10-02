@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salma Silver ❤️</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#0d080c;
+  color:#fff;
+  font-family:Georgia,"Times New Roman",serif;
+  overflow-x:hidden;
+}
+
+/* شاشة الدخول */
+#login{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:25px;
+  background:
+    radial-gradient(circle at top,#4b1c32,#160b12 55%,#080508);
+}
+
+.login-box{
+  width:100%;
+  max-width:430px;
+}
+
+.lock{
+  font-size:45px;
+  margin-bottom:15px;
+}
+
+.small{
+  color:#d99aaa;
+  letter-spacing:4px;
+  font-size:12px;
+}
+
+.login-box h1{
+  font-size:55px;
+  font-weight:normal;
+  margin:20px 0;
+}
+
+.login-box p{
+  color:#c9b5bd;
+  line-height:1.8;
+  margin-bottom:25px;
+}
+
+input{
+  width:100%;
+  padding:15px;
+  border-radius:30px;
+  border:1px solid #704052;
+  background:#1b0e16;
+  color:white;
+  text-align:center;
+  outline:none;
+  margin-bottom:12px;
+}
+
+button{
+  border:0;
+  border-radius:30px;
+  padding:14px 28px;
+  background:#b96883;
+  color:white;
+  cursor:pointer;
+  font-size:16px;
+}
+
+#error{
+  color:#ed91a8;
+  height:25px;
+  margin-top:10px;
+}
+
+/* الموقع */
+#site{
+  display:none;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+  background:
+    radial-gradient(circle at 50% 0,#552139,#160b12 55%,#080508);
+}
+
+.hero small{
+  color:#dfa0b0;
+  letter-spacing:5px;
+}
+
+.hero h2{
+  font-size:clamp(55px,14vw,110px);
+  font-weight:normal;
+  line-height:.95;
+  margin:25px 0;
+}
+
+.scroll{
+  color:#a9929b;
+  animation:move 1.7s infinite;
+}
+
+@keyframes move{
+  50%{
+    transform:translateY(10px);
+  }
+}
+
+.container{
+  width:92%;
+  max-width:950px;
+  margin:auto;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  padding:60px 0;
+}
+
+.photo{
+  aspect-ratio:1/1.15;
+  overflow:hidden;
+  border-radius:20px;
+  background:#21131b;
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.5s;
+}
+
+.photo img:hover{
+  transform:scale(1.05);
+}
+
+.quote{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.heart{
+  color:#d87591;
+  font-size:35px;
+  margin-bottom:25px;
+}
+
+.quote h3{
+  font-size:clamp(28px,7vw,52px);
+  font-weight:normal;
+  line-height:1.4;
+}
+
+.message{
+  background:#1c1018;
+  border:1px solid #4d3040;
+  border-radius:28px;
+  padding:40px 25px;
+  text-align:center;
+  margin-bottom:80px;
+}
+
+.message h3{
+  font-size:30px;
+  font-weight:normal;
+  margin-bottom:20px;
+}
+
+.message p{
+  color:#cdbbc2;
+  line-height:2;
+  font-size:18px;
+}
+
+.footer{
+  text-align:center;
+  padding:60px 20px 100px;
+  color:#917d86;
+}
+
+/* زر التعديل */
+.edit{
+  position:fixed;
+  left:15px;
+  bottom:15px;
+  z-index:10;
+  background:#24131e;
+  border:1px solid #704052;
+  padding:11px 18px;
+}
+
+/* لوحة التعديل */
+#editor{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:#10090fee;
+  overflow:auto;
+  padding:20px;
+}
+
+.editor-box{
+  max-width:600px;
+  margin:auto;
+  background:#21131d;
+  border:1px solid #543646;
+  border-radius:25px;
+  padding:25px;
+}
+
+.editor-box h2{
+  font-weight:normal;
+  margin-bottom:15px;
+}
+
+.field{
+  margin:18px 0;
+}
+
+.field label{
+  display:block;
+  color:#dfa0b0;
+  margin-bottom:7px;
+  font-size:14px;
+}
+
+textarea{
+  width:100%;
+  min-height:100px;
+  resize:vertical;
+  padding:13px;
+  border-radius:15px;
+  background:#120b12;
+  border:1px solid #604151;
+  color:white;
+  outline:none;
+}
+
+.close{
+  background:#33202b;
+  margin-top:10px;
+}
+
+@media(max-width:500px){
+
+  .gallery{
+    gap:8px;
+  }
+
+  .login-box h1{
+    font-size:45px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+
+<section id="login">
+
+<div class="login-box">
+
+<div class="lock">🔒</div>
+
+<div class="small">
+OUR LITTLE WORLD
+</div>
+
+<h1 id="loginName">
+Salma Silver
+</h1>
+
+<p>
+اكتب كلمة السر للدخول إلى عالمنا ❤️
+</p>
+
+<input
+id="password"
+type="password"
+placeholder="كلمة السر"
+>
+
+<button onclick="enterSite()">
+دخول ❤️
+</button>
+
+<div id="error"></div>
+
+</div>
+
+</section>
+
+
+<!-- SITE -->
+
+<main id="site">
+
+<section class="hero">
+
+<div>
+
+<small>
+✦ SALMA SILVER ✦
+</small>
+
+<h2 id="title">
+Salma<br>
+Silver
+</h2>
+
+<div class="scroll">
+↓ انزل لتشوف الذكريات ↓
+</div>
+
+</div>
+
+</section>
+
+
+<div class="container">
+
+<section class="gallery">
+
+<div class="photo">
+<img id="photo1"
+src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="photo">
+<img id="photo2"
+src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="photo">
+<img id="photo3"
+src="https://images.unsplash.com/photo-1494774157365-9e04c6720e7c?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="photo">
+<img id="photo4"
+src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="photo">
+<img id="photo5"
+src="https://images.unsplash.com/photo-1501901609773-9c5a0f7f4f3e?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="photo">
+<img id="photo6"
+src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=900&q=80">
+</div>
+
+</section>
+
+
+<section class="quote">
+
+<div class="heart">
+♥
+</div>
+
+<h3 id="quote">
+"في عينيكي لقيت العمر كله."
+</h3>
+
+</section>
+
+
+<section class="message">
+
+<h3 id="messageTitle">
+رسالة من القلب
+</h3>
+
+<p id="message">
+كل لحظة معاكي بتخلي الدنيا أهدى وأجمل.
+وجودك في حياتي هو أجمل صدفة حصلتلي.
+</p>
+
+</section>
+
+</div>
+
+
+<div class="footer">
+✦ love · memories · forever ✦
+</div>
+
+
+<button
+class="edit"
+onclick="openEditor()">
+✎ تعديل
+</button>
+
+</main>
+
+
+<!-- EDITOR -->
+
+<div id="editor">
+
+<div class="editor-box">
+
+<h2>
+تعديل الموقع من الموبايل ❤️
+</h2>
+
+<div class="field">
+
+<label>
+كلمة السر
+</label>
+
+<input
+id="editPassword"
+value="1234"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+اسم الموقع
+</label>
+
+<input
+id="editTitle"
+value="Salma Silver"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+الجملة الرئيسية
+</label>
+
+<textarea id="editQuote">في عينيكي لقيت العمر كله.</textarea>
+
+</div>
+
+
+<div class="field">
+
+<label>
+الرسالة
+</label>
+
+<textarea id="editMessage">كل لحظة معاكي بتخلي الدنيا أهدى وأجمل. وجودك في حياتي هو أجمل صدفة حصلتلي.</textarea>
+
+</div>
+
+
+<div class="field">
+
+<label>
+رابط الصورة الأولى
+</label>
+
+<input id="editPhoto1">
+</div>
+
+<div class="field">
+
+<label>
+رابط الصورة الثانية
+</label>
+
+<input id="editPhoto2">
+</div>
+
+<div class="field">
+
+<label>
+رابط الصورة الثالثة
+</label>
+
+<input id="editPhoto3">
+</div>
+
+<div class="field">
+
+<label>
+رابط الصورة الرابعة
+</label>
+
+<input id="editPhoto4">
+</div>
+
+
+<button onclick="saveChanges()">
+حفظ التعديلات ❤️
+</button>
+
+<button
+class="close"
+onclick="closeEditor()">
+إغلاق
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+let data = {
+
+password:"1234",
+
+title:"Salma Silver",
+
+quote:"في عينيكي لقيت العمر كله.",
+
+message:
+"كل لحظة معاكي بتخلي الدنيا أهدى وأجمل. وجودك في حياتي هو أجمل صدفة حصلتلي."
+
+};
+
+
+/* تحميل التعديلات */
+
+const saved =
+localStorage.getItem("salmaSilver");
+
+if(saved){
+
+data = JSON.parse(saved);
+
+}
+
+
+/* الدخول */
+
+function enterSite(){
+
+const password =
+document.getElementById("password").value;
+
+if(password === data.password){
+
+document.getElementById("login").style.display="none";
+
+document.getElementById("site").style.display="block";
+
+window.scrollTo(0,0);
+
+}else{
+
+document.getElementById("error").innerText =
+"كلمة السر غلط ❤️";
+
+}
+
+}
+
+
+/* فتح التعديل */
+
+function openEditor(){
+
+document.getElementById("editPassword").value =
+data.password;
+
+document.getElementById("editTitle").value =
+data.title;
+
+document.getElementById("editQuote").value =
+data.quote;
+
+document.getElementById("editMessage").value =
+data.message;
+
+document.getElementById("editor").style.display="block";
+
+}
+
+
+/* حفظ */
+
+function saveChanges(){
+
+data.password =
+document.getElementById("editPassword").value;
+
+data.title =
+document.getElementById("editTitle").value;
+
+data.quote =
+document.getElementById("editQuote").value;
+
+data.message =
+document.getElementById("editMessage").value;
+
+
+/* النص */
+
+document.getElementById("loginName").innerText =
+data.title;
+
+document.getElementById("title").innerHTML =
+data.title.replace(" ","<br>");
+
+document.getElementById("quote").innerText =
+'"'+data.quote+'"';
+
+document.getElementById("message").innerText =
+data.message;
+
+
+/* الصور */
+
+const photos = [
+
+document.getElementById("editPhoto1").value,
+
+document.getElementById("editPhoto2").value,
+
+document.getElementById("editPhoto3").value,
+
+document.getElementById("editPhoto4").value
+
+];
+
+photos.forEach((url,index)=>{
+
+if(url){
+
+document.getElementById(
+"photo"+(index+1)
+).src=url;
+
+}
+
+});
+
+
+/* حفظ على الجهاز */
+
+localStorage.setItem(
+"salmaSilver",
+JSON.stringify(data)
+);
+
+alert("تم حفظ التعديلات ❤️");
+
+closeEditor();
+
+}
+
+
+/* إغلاق */
+
+function closeEditor(){
+
+document.getElementById("editor").style.display="none";
+
+}
+
+</script>
+
+</body>
+</html>
